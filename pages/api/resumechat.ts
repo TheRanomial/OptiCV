@@ -1,6 +1,5 @@
 export const runtime = "edge";
 
-import { NextApiRequest } from "next";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { StreamData, streamText } from "ai";
 import { queryPineconeDatabase } from "@/lib/pinecone";
@@ -33,7 +32,7 @@ const model = google("gemini-1.5-flash", {
   ],
 });
 
-export default async function handler(req: NextApiRequest) {
+export default async function handler(req: Request) {
   const { messages, data } = await req.json();
   console.log(data.reportData);
 
